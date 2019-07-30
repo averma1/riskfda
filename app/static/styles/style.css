@@ -1,0 +1,192 @@
+/* ~~~~~~~~~~ MEDIA QUERIES  ~~~~~~~~~~  */
+@media only screen and (max-width: 495px){
+    fda_logo{
+        width: 20px !important;
+    }
+    riskfda_logo{
+        max-width: 20px;
+    }
+}
+/* ~~~~~~~~~~ SITE CONTENT ~~~~~~~~~~  */
+html{
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100%;
+    overflow-y: scroll;
+    font-size: 18px;
+}
+body {
+    margin: 0;
+    color: #ffffff;
+    text-decoration: none;    
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.4;
+    color: rgb(46, 41, 37);
+    background-color: #ffffff;
+    min-height: 100%;
+}
+p {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 24px;
+}
+p:last-child{
+    margin-bottom: 0;
+}
+.site {
+    margin-top: 140px;
+}
+/* ~~~~~~~~~~ NAV BAR ~~~~~~~~~~  */
+.fixed-nav-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: 100%;
+    height: 80px;
+    background-color: rgb(0, 124, 186);
+}
+/* ~~~~~~~~~~ LOGOS ~~~~~~~~~~  */
+#fda_logo{
+    max-width: 100%;
+    height: 80;
+    float: right;
+    display: table;
+    clear: both;
+    content: "";
+    padding-right: 15px;
+}
+#riskfda_logo{
+    max-width: 100%;
+    height: 80;
+    padding-left: 10px;
+}
+/* ~~~~~~~~~~ TAB BUTTONS ~~~~~~~~~~  */
+.tab{
+    overflow: hidden;
+}
+.tab button{
+    background-color: rgb(46, 41, 37);
+    color: #ffffff;
+    float: left;
+    border: none;
+    outline: none;
+}
+.tab button:hover{
+    background-color: rgb(0, 124, 186);
+}
+.tab button.active{
+    background-color: #ffffff;
+    color: rgb(46, 41, 37);
+    outline: rgb(46, 41, 37);
+}
+/* ~~~~~~~~~~ GRID SYSTEM ~~~~~~~~~~  */
+.l-wrap{
+    max-width: 1140px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.grid-item{
+    width: calc((100% - 5px * 2) / 2);
+    margin-bottom: 20px;
+    margin-left: 2.5px;
+    margin-right: 2.5px;
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.column{
+    width: calc(100% / 4);
+    height: 60px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+    margin-right: 0px;
+    float: left;
+    font-size: 2vw;
+}
+.one-fourth{
+    width: calc(100% / 4);
+}
+/* ~~~~~~~~~~ FAQ BOX ~~~~~~~~~~  */
+.box{
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 48px;
+}
+.details-group{
+    border: 1px solid rgb(0, 124, 186);
+    border-radius: 5px;
+    box-shadow: rgb(0, 124, 186);
+}
+.details{
+    overflow: hidden;
+    border-bottom: 1px solid rgb(0, 124, 186);
+    transition: height 300ms ease-in-out;
+}
+.details:last-child{
+    border-bottom: 0;
+}
+.detailed_title, .detailed_content{
+    padding: 24px;
+}
+.detailed_title{
+    position: relative;
+    list-style: none;
+    padding-left: 48px;
+    outline: 0;
+    font-size: 1.4rem;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: color 300ms ease-in-out;
+}
+[open] > .detailed_title{
+    color: rgb(0, 124, 186);
+}
+.detailed_title::-webkit-details-marker{
+    display: none;
+}
+.detailed_title:before, .detailed_title:after{
+    content: "";
+    position: absolute;
+}
+.detailed_title:before{
+    left: 20px;
+    top: 50%;
+    height: 2px;
+    margin-top: -1px;
+    width: 16px;
+    background: rgb(0, 124, 186);
+}
+.detailed_title:after{
+    left: 28px;
+    top: 50%;
+    height: 16px;
+    margin-top: -8px;
+    width: 2px;
+    margin-left: -1px;
+    background: rgb(0, 124, 186);
+    transition: all 300ms ease-in-out;
+}
+[open] .detailed_title:after{
+    opacity: 0;
+    transform: translateY(25%);
+}
+.detailed_content{
+    padding-top: 0;
+    padding-left: 48px;
+}
+/* ~~~~~~~~~~ SCROLLBAR ~~~~~~~~~~  */
+::-webkit-scrollbar{
+    width: 8px;
+}
+::-webkit-scrollbar-track{
+    background: #ffffff; 
+}
+::-webkit-scrollbar-thumb{
+    background: rgb(0, 124, 186); 
+}
+::-webkit-scrollbar-thumb:hover{
+    background: rgb(46, 41, 37);
+}

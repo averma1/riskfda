@@ -1,0 +1,155 @@
+<html>
+    <head>
+        <title> {{ title }} </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+        <script type = "text/javascript">
+            class Details {
+                constructor(el, settings) {
+                    this.group = el;
+                    this.details = this.group.getElementsByClassName("details");
+                    this.toggles = this.group.getElementsByClassName("detailed_title");
+                    this.contents = this.group.getElementsByClassName("detailed_content"); 
+                    this.settings = Object.assign({
+                        speed: 300,
+                        one_visible: false
+                    }, settings);
+                    for (let i = 0; i < this.details.length; i++) {
+                        const detail  = this.details[i];
+                        const toggle  = this.toggles[i];
+                        const content = this.contents[i];
+                        detail.style.transitionDuration = this.settings.speed + "ms";
+                        if (!detail.hasAttribute("open")) {
+                            detail.style.height = toggle.clientHeight + "px";
+                        } 
+                        else {
+                            detail.style.height = toggle.clientHeight + content.clientHeight + "px";
+                        }
+                    }
+                    this.group.addEventListener("click", (e) => {      
+                        if (e.target.classList.contains("detailed_title")) {
+                            e.preventDefault();
+                            let num = 0;
+                            for (let i = 0; i < this.toggles.length; i++) {
+                                if (this.toggles[i] === e.target) {
+                                    num = i;
+                                    break;
+                                }
+                            }
+                            if (!e.target.parentNode.hasAttribute("open")) {
+                                this.open(num);
+                            } 
+                            else {
+                                this.close(num);
+                            }
+                        }
+                    });
+                }
+                open(i) {
+                    const detail = this.details[i];
+                    const toggle = this.toggles[i];
+                    const content = this.contents[i];
+                    if (this.settings.one_visible) {
+                        for (let a = 0; a < this.toggles.length; a++) {
+                            if (i !== a) this.close(a);
+                        }
+                    }
+                    detail.classList.remove("is-closing");
+                    const toggle_height = toggle.clientHeight;
+                    detail.setAttribute("open", true);
+                    const content_height = content.clientHeight;
+                    detail.removeAttribute("open");
+                    detail.style.height = toggle_height + content_height + "px";
+                    detail.setAttribute("open", true);
+                }
+                close(i) {
+                    const detail = this.details[i];
+                    const toggle = this.toggles[i];
+                    detail.classList.add("is-closing");
+                    const toggle_height = toggle.clientHeight;
+                    detail.style.height = toggle_height + "px";
+                    setTimeout(() => {
+                        if (detail.classList.contains("is-closing"))
+                            detail.removeAttribute("open");
+                            detail.classList.remove("is-closing");
+                    }, this.settings.speed);
+                }
+            }
+            (() => {
+                const els = document.getElementsByClassName("details-group");
+                for (let i = 0; i < els.length; i++) {
+                    const details = new Details(els[i], {
+                        speed: 500,
+                        one_visible: true
+                    });
+                }
+            })();
+        </script>
+    </head>
+
+    <body>
+        <nav class="fixed-nav-bar">
+            <img src="/static/header.png" id="riskfda_logo" width="200">
+            <img src="/static/fda.png" id="fda_logo" width="270">
+            <div class="tab">
+                    <button type="button" class="tablinks one-fourth column" onclick="window.location.href='{{ url_for('index') }}';"> Risk Classification</button>
+                    <button type="button" class="tablinks one-fourth column" onclick="window.location.href='{{ url_for('recalls') }}';"> Recalls </button>
+                    <button type="button" class="tablinks one-fourth column" onclick="window.location.href='{{ url_for('advevents') }}';"> Adverse Events </button>
+                    <button type="button" class="tablinks one-fourth column" onclick="window.location.href='{{ url_for('faq') }}';"> Glossary </button>
+                </div>
+        </nav>
+
+        <div class="site">
+            <div class="box">
+                <section class="details-group">
+                    <details class="details" open>
+                        <summary class="detailed_title"> General </summary>
+                        <div class="detailed_content">
+                            <p> <strong> Act/CFR Number - </strong> Stands for Code of Federal Regulations. The violation code for the inspection. </p> 
+                            <p> <strong> Drug – </strong> Medicine or other substance which causes a physiological effect when ingested or otherwise introduced to the body. May be chemical or biological. </p> 
+                            <p> <strong> Drug Manufacturer – </strong> Synthesis of pharmaceutical drugs by pharmaceutical companies on an industrial scale.  </p> 
+                            <p> <strong> Facility Establishment Identifier (FEI) Number - </strong> An unique identifier assigned by the FDA to identify firms associated with FDA regulated products. </p> 
+                            <p> <strong> Food and Drug Administration (FDA) - </strong> Responsible for protecting public heath by assuring that food, devices, biological products, drugs and vaccines intended for human use are safe and effective. </p> 
+                        </div>
+                    </details>
+                    <details class="details">
+                        <summary class="detailed_title"> Risk Classification </summary>
+                        <div class="detailed_content">
+                            <p> <strong> No Action Indicated (NAI) - </strong> No objectionable conditions or practices were found during the inspection, or the objectionable conditions found do not justify further regulatory action. </p> 
+                            <p> <strong> Number of Inspections – </strong> Number of inspections for a facility over time or in a given year. </p> 
+                            <p> <strong> Official Action Indicated (OAI) - </strong> The facility is in an unacceptable state of compliance with regards to current good manufacturing practice. The facility may be subject to a CGMP regulatory or enforcement action based on this inspection, and FDA may withhold approval of any pending applications or supplements in which this facility is listed. </p> 
+                            <p> <strong> Voluntary Action Indicated (VAI) - </strong> The facility is in a minimally acceptable state of compliance with regards to current good manufacturing practice. FDA will not take or recommend regulatory or enforcement action because the objectionable conditions do not meet the threshold for action at this time. </p> 
+                        </div>
+                    </details>
+                    <details class="details">
+                        <summary class="detailed_title"> Recall </summary>
+                        <div class="detailed_content">
+                            <p> <strong> Center Classification Date – </strong> Date of status classification of a recall event (ongoing, terminated, completed). </p> 
+                            <p> <strong> Class I - </strong> Significant and immediate danger of death and serious injury due to dangerous or defective products. </p> 
+                            <p> <strong> Class II - </strong> Intermediate threat level with a link to death or serious injury still present. May cause temporary health problems. </p> 
+                            <p> <strong> Class III - </strong> No immediate or perceived danger of health issues; Unlikely to cause an adverse health effect. May include potential contaminations, FDA labeling or manufacturing law violations. </p> 
+                            <p> <strong> Completed – </strong> All product expected to be recovered has been retrieved and impounded while completing all product corrections. </p>  
+                            <p> <strong> Distribution Pattern – </strong> The pattern of drug distribution; May be a series of states or nationwide in distribution of the product. </p> 
+                            <p> <strong> Ongoing – </strong> Indicates that a recall is in process. </p> 
+                            <p> <strong> Product ID – </strong> Identifier assigned to a recall of one product. </p> 
+                            <p> <strong> Recall - </strong> A recall is a firm's removal or correction of marketed products, including its labeling and/or promotional materials that FDA considers to be in violation of the laws it administers. The Agency would initiate legal action (e.g., seizure or other administrative or civil actions available to the Agency) if the product was not recalled. Recalls do not include market withdrawals or stock recoveries. </p>  
+                            <p> <strong> Terminated – </strong> Indicates all reasonable efforts were made to correct or remove the product in accordance to recall strategy; Proper disposition has been made according to the degree of hazard. </p> 
+                        </div>
+                    </details>
+                    <details class="details">
+                        <summary class="detailed_title"> Adverse Events </summary>
+                        <div class="detailed_content">
+                            <p> <strong> Adverse Event – </strong> The FDA defines an adverse event as, “any undesirable experience associated with the use of a medical product in a patient.” </p>
+                            <p> <strong> Congenital Anomaly (CA) - </strong> Structural of functional anomalies that occur during intrauterine life. May be identified prenatally, at birth or later in infancy. </p>
+                            <p> <strong> Death (DE) - </strong> Reported if suspected that death was an outcome of the adverse event and should include the date if known. </p>
+                            <p> <strong> Disability (DS) - </strong> Adverse event resulted in a substantial disruption of a person's ability to conduct normal life functions, i.e., the adverse event resulted in a significant, persistent or permanent change, impairment, damage or disruption in the patient's body function/structure, physical activities and/or quality of life. </p>
+                            <p> <strong> Hospitalization (HO) - </strong> Admission to a hospital due to drug reaction causing health issues. </p>
+                            <p> <strong> Other Serious Medical Events (OT) - </strong> Event does not fit the other outcomes, but the event may jeopardize the patient and may require medical or surgical intervention (treatment) to prevent one of the other outcomes. Examples include allergic brochospasm (a serious problem with breathing) requiring treatment in an emergency room, serious blood dyscrasias (blood disorders) or seizures/convulsions that do not result in hospitalization. The development of drug dependence or drug abuse would also be examples of important medical events. </p>
+                            <p> <strong> Required Intervention to Prevent Permanent Damage (RI) - </strong> Irreversible impairment or damage to a body’s function or structure. </p>
+                        </div>
+                    </details>
+                </section>
+            </div>
+        </div>
+    </body>
+</html>
