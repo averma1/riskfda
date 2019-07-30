@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title> {{ title }} </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+    </head>
+
+    <body>
+        <nav class="fixed-nav-bar">
+            <img src="/static/img/header.png" id="riskfda_logo" width="200">
+            <img src="/static/img/fda.png" id="fda_logo" width="270">
+            <div class="tab">
+                <button type="button" class="tablinks one-fourth column" onclick="window.location.href='{{ url_for('welcome') }}';"> Welcome </button>
+                <button type="button" class="tablinks one-fourth column" onclick="window.location.href='{{ url_for('index') }}';"> Risk Classification </button>
+                <button type="button" class="tablinks one-fourth column" onclick="window.location.href='{{ url_for('recalls') }}';"> Recalls </button>
+                <button type="button" class="tablinks one-fourth column" onclick="window.location.href='{{ url_for('advevents') }}';"> Adverse Events </button>
+                <button type="button" class="tablinks one-fourth column" onclick="window.location.href='{{ url_for('faq') }}';"> Glossary </button>
+            </div>
+        </nav>
+
+        <div class="welcome-site">
+                <div class="text-box">
+                    <h2 class="welcome-text"> riskFDA is a risk-based web application that utilizes precise data analytics and descriptive spatial mapping to to improve public safety in drug manufacturing. </h2>
+                </div>
+        </div>
+
+    </body>
+
+</html>

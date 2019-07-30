@@ -13,6 +13,7 @@ html{
     min-height: 100%;
     overflow-y: scroll;
     font-size: 18px;
+    height: 100%;
 }
 body {
     margin: 0;
@@ -23,7 +24,7 @@ body {
     line-height: 1.4;
     color: rgb(46, 41, 37);
     background-color: #ffffff;
-    min-height: 100%;
+    height: 100%;
 }
 p {
     margin: 0;
@@ -35,6 +36,12 @@ p:last-child{
 }
 .site {
     margin-top: 140px;
+}
+.welcome-site{
+    margin-top: 140px;
+    background-image: url("/static/img/lab.png");
+    background-size: cover;
+    height: 100%;
 }
 /* ~~~~~~~~~~ NAV BAR ~~~~~~~~~~  */
 .fixed-nav-bar {
@@ -98,7 +105,7 @@ p:last-child{
     text-align: center;
 }
 .column{
-    width: calc(100% / 4);
+    width: calc(100% / 5);
     height: 60px;
     margin-bottom: 20px;
     margin-left: 0px;
@@ -107,7 +114,7 @@ p:last-child{
     font-size: 2vw;
 }
 .one-fourth{
-    width: calc(100% / 4);
+    width: calc(100% / 5);
 }
 /* ~~~~~~~~~~ FAQ BOX ~~~~~~~~~~  */
 .box{
@@ -120,6 +127,7 @@ p:last-child{
     border: 1px solid rgb(0, 124, 186);
     border-radius: 5px;
     box-shadow: rgb(0, 124, 186);
+    background-color: #ffffff;
 }
 .details{
     overflow: hidden;
@@ -176,6 +184,14 @@ p:last-child{
 .detailed_content{
     padding-top: 0;
     padding-left: 48px;
+}
+/* ~~~~~~~~~~ TEXT BOX FOR WELCOME PAGE ~~~~~~~~~~  */
+.text-box{
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px;
+    text-align: center;
 }
 /* ~~~~~~~~~~ SCROLLBAR ~~~~~~~~~~  */
 ::-webkit-scrollbar{

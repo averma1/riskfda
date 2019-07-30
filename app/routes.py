@@ -17,3 +17,7 @@ def advevents():
 @app.route('/faq')
 def faq():
     return render_template('faq.html', title='RiskFDA')
+
+@app.route('/welcome')
+def welcome():
+    return render_template('welcome.html', title='RiskFDA')
