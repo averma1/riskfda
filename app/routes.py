@@ -4,7 +4,7 @@ from app import app
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template('risk.html', title='RiskFDA')
+    return render_template('welcome.html', title='RiskFDA')
 
 @app.route('/recalls')
 def recalls():
@@ -18,6 +18,6 @@ def advevents():
 def faq():
     return render_template('faq.html', title='RiskFDA')
 
-@app.route('/welcome')
-def welcome():
-    return render_template('welcome.html', title='RiskFDA')
+@app.route('/risk')
+def risk():
+    return render_template('risk.html', title='RiskFDA')

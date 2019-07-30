@@ -8,10 +8,10 @@
     <body>
         <nav class="fixed-nav-bar">
             <img src="/static/img/header.png" id="riskfda_logo" width="200">
-            <img src="/static/img/fda.png" id="fda_logo" width="270">
+            <img src="/static/img/fda.png" id="fda_logo" width="250">
             <div class="tab">
-                <button type="button" class="tablinks one-fourth column" onclick="window.location.href='{{ url_for('welcome') }}';"> Welcome </button>
-                <button type="button" class="tablinks one-fourth column" onclick="window.location.href='{{ url_for('index') }}';"> Risk Classification </button>
+                <button type="button" class="tablinks one-fourth column" onclick="window.location.href='{{ url_for('index') }}';"> Welcome </button>
+                <button type="button" class="tablinks one-fourth column" onclick="window.location.href='{{ url_for('risk') }}';"> Risk Classification </button>
                 <button type="button" class="tablinks one-fourth column" onclick="window.location.href='{{ url_for('recalls') }}';"> Recalls </button>
                 <button type="button" class="tablinks one-fourth column" onclick="window.location.href='{{ url_for('advevents') }}';"> Adverse Events </button>
                 <button type="button" class="tablinks one-fourth column" onclick="window.location.href='{{ url_for('faq') }}';"> Glossary </button>
@@ -19,11 +19,33 @@
         </nav>
 
         <div class="welcome-site">
-                <div class="text-box">
-                    <h2 class="welcome-text"> riskFDA is a risk-based web application that utilizes precise data analytics and descriptive spatial mapping to to improve public safety in drug manufacturing. </h2>
+            <div class="text-box">
+                <div class="slider">
+                    <input type="radio" name="slider" title="slide1" checked="checked" class="slider__nav"/>
+                    <input type="radio" name="slider" title="slide2" class="slider__nav"/>
+                    <input type="radio" name="slider" title="slide3" class="slider__nav"/>
+                    <input type="radio" name="slider" title="slide4" class="slider__nav"/>
+                    <div class="slider__inner">
+                        <div class="slider__contents">  <i class="slider__image fa"></i>
+                            <h2 class="slider__caption"> riskFDA </h2>
+                            <p class="slider__txt">riskFDA is a risk-based web application that utilizes precise data analytics and descriptive spatial mapping to to improve public safety in drug manufacturing.</p>
+                        </div>
+                        <div class="slider__contents"><i class="slider__image fa"></i>
+                            <h2 class="slider__caption"> Recent Recalls </h2>
+                            <p class="slider__txt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At cupiditate omnis possimus illo quos, corporis minima!</p>
+                        </div>
+                        <div class="slider__contents"><i class="slider__image fa"></i>
+                            <h2 class="slider__caption"> Adverse Events in the News </h2>
+                            <p class="slider__txt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At cupiditate omnis possimus illo quos, corporis minima!</p>
+                        </div>
+                        <div class="slider__contents"><i class="slider__image fa"></i>
+                            <h2 class="slider__caption"> riskFDA </h2>
+                            <p class="slider__txt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At cupiditate omnis possimus illo quos, corporis minima!</p>
+                        </div>
+                    </div>
                 </div>
+            </div>
         </div>
-
     </body>
 
 </html>
