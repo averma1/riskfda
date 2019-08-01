@@ -3,6 +3,26 @@
         <title> {{ title }} </title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+        <style>
+            /* ~~~~~~~~~~ TAB BUTTONS ~~~~~~~~~~  */
+            .tab{
+                overflow: hidden;
+            }
+            .tab button{
+                background-color: rgb(46, 41, 37);
+                color: #ffffff;
+                float: left;
+                border: none;
+                outline: none;
+            }
+            .tab button:hover{
+                background-color: rgb(0, 124, 186);
+            }
+            #activetab{
+                background-color: rgb(0, 124, 186) !important;
+                color: #ffffff !important;
+            }
+        </style>
     </head>
 
     <body>
@@ -10,11 +30,11 @@
             <img src="/static/img/header.png" id="riskfda_logo" width="200">
             <img src="/static/img/fda.png" id="fda_logo" width="270">
             <div class="tab">
-                <button type="button" class="tablinks one-fourth column" onclick="window.location.href='{{ url_for('index') }}';"> Welcome </button>
-                <button type="button" class="tablinks one-fourth column" onclick="window.location.href='{{ url_for('risk') }}';"> Risk Classification </button>
-                <button type="button" class="tablinks one-fourth column" onclick="window.location.href='{{ url_for('recalls') }}';"> Recalls </button>
-                <button type="button" class="tablinks one-fourth column" onclick="window.location.href='{{ url_for('advevents') }}';"> Adverse Events </button>
-                <button type="button" class="tablinks one-fourth column" onclick="window.location.href='{{ url_for('faq') }}';"> Glossary </button>
+                <button type="button" class="one-fourth column" onclick="window.location.href='{{ url_for('index') }}';"> Welcome </button>
+                <button type="button" id="{{tabisactive}}" class="one-fourth column" onclick="window.location.href='{{ url_for('risk') }}';"> Risk Classification </button>
+                <button type="button" class="one-fourth column" onclick="window.location.href='{{ url_for('recalls') }}';"> Recalls </button>
+                <button type="button" class="one-fourth column" onclick="window.location.href='{{ url_for('advevents') }}';"> Adverse Events </button>
+                <button type="button" class="one-fourth column" onclick="window.location.href='{{ url_for('faq') }}';"> Glossary </button>
             </div>
         </nav>
 

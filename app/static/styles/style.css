@@ -15,7 +15,6 @@
 html{
     font-family: Arial, Helvetica, sans-serif;
     min-height: 100%;
-    overflow-y: scroll;
     font-size: 18px;
     height: 100%;
 }
@@ -71,25 +70,6 @@ p:last-child{
     max-width: 100%;
     height: 80;
     padding-left: 10px;
-}
-/* ~~~~~~~~~~ TAB BUTTONS ~~~~~~~~~~  */
-.tab{
-    overflow: hidden;
-}
-.tab button{
-    background-color: rgb(46, 41, 37);
-    color: #ffffff;
-    float: left;
-    border: none;
-    outline: none;
-}
-.tab button:hover{
-    background-color: rgb(0, 124, 186);
-}
-.tab button.active{
-    background-color: #ffffff;
-    color: rgb(46, 41, 37);
-    outline: rgb(46, 41, 37);
 }
 /* ~~~~~~~~~~ GRID SYSTEM ~~~~~~~~~~  */
 .l-wrap{
@@ -359,4 +339,3 @@ a {
 ul{
     list-style-type: none;
 }
-
