@@ -178,16 +178,16 @@ p:last-child{
     text-align: center;
 }
 /* ~~~~~~~~~~ SCROLLBAR ~~~~~~~~~~  */
-::-webkit-scrollbar{
-    width: 8px;
+.detailed_content::-webkit-scrollbar{
+    width: 10px;
 }
-::-webkit-scrollbar-track{
+.detailed_content::-webkit-scrollbar-track{
     background: #ffffff; 
 }
-::-webkit-scrollbar-thumb{
+.detailed_content::-webkit-scrollbar-thumb{
     background: rgb(0, 124, 186); 
 }
-::-webkit-scrollbar-thumb:hover{
+.detailed_content::-webkit-scrollbar-thumb:hover{
     background: rgb(46, 41, 37);
 }
 
@@ -295,7 +295,6 @@ p:last-child{
     font-weight: 500;
     margin: 2rem 0 1rem;
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-    text-transform: uppercase;
     padding-top: 20px;
     text-decoration: underline;
 }
@@ -305,8 +304,12 @@ p:last-child{
     color: rgb(46, 41, 37);
     font-size: 2vw;
     max-width: 300px;
+    
 }
-
+.slider__txt a::hover { /* TEXT */
+    font-style: italic !important;
+    
+}
 
 @-webkit-keyframes check {
     50% {
